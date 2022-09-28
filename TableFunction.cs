@@ -81,7 +81,6 @@ namespace MenuFunction
                 blobName: $"{filename}.json");
 
 
-
                 // upload the file
                 blobClient.Upload(stream);
 
