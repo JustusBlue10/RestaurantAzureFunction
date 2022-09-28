@@ -41,25 +41,18 @@ namespace MenuFunction
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-
-            string name = req.Query["name"];
-
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
           
-
-
             // Storage connection
             var CONNECTION_STRING = Environment.GetEnvironmentVariable("AZURE_CONN_STRING");
-
 
             // New instance of the TableClient class
             TableServiceClient tableServiceClient = new TableServiceClient(CONNECTION_STRING);
 
             // New instance of TableClient class referencing the server-side table
             TableClient tableClient = tableServiceClient.GetTableClient(
-                tableName: "adventureworks"
+                tableName: "kukhnyata-na-yasen"
             );
 
             await tableClient.CreateIfNotExistsAsync();
@@ -95,8 +88,8 @@ namespace MenuFunction
                 // Create new item using composite key constructor
                 var prod1 = new Product()
                 {
-                    RowKey =rowKeyID,     // Combination of RowKey and PartitionKey always needs to be unique
-                    PartitionKey = "gear-surf-surfboards",
+                    RowKey = rowKeyID,     // Combination of RowKey and PartitionKey always needs to be unique
+                    PartitionKey = "recent-orders",
                     Name = data.Name,
                     Quantity = data.Quantity,
                     Sale = data.Sale
