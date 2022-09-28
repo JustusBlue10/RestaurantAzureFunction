@@ -77,17 +77,8 @@ namespace MenuFunction
                 const string BLOB_CONTAINER = "orders";
                 // string BlobUri = rowKeyID;
 
-                // Get a reference to a container
-                // BlobContainerClient container = new BlobContainerClient(CONNECTION_STRING, BLOB_CONTAINER);
-                // container.Create();
-
-                // Get a reference to a blob
-                // BlobClient blob = container.GetBlobClient(BlobUri);
-
-                
 
                 // You probably don't want to use a StreamWriter in this scenario ...
-                // Slimme magic van Tijs
                 var filename = rowKeyID;
                 byte[] byteArray = Encoding.ASCII.GetBytes(requestBody);
                 MemoryStream stream = new MemoryStream(byteArray);
