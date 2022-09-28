@@ -58,7 +58,7 @@ namespace MenuFunction
             await tableClient.CreateIfNotExistsAsync();
 
 
-            // Trigger stuff
+            // Trigger stufffff
             
                 Console.WriteLine("This would be your table");
 
